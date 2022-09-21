@@ -2,7 +2,6 @@ import React,{useState} from "react";
 
 function TextForm(props) {
     const handleUpClick = ()=>{
-        // console.log("Uppercase was clicked"+ text)
         let newText = text.toUpperCase()
         setText(newText)
         props.showAlert("Converted to uppercase!" , "success")
@@ -18,7 +17,6 @@ function TextForm(props) {
         props.showAlert("Text Cleared" , "success")
       }
       const handleOnChange = (event)=>{
-        // console.log("on change")
         setText(event.target.value)
       }
       const handleCopy = ()=>{
@@ -52,7 +50,7 @@ function TextForm(props) {
     </div>  
     <div className="container my-3" style={{color: props.mode==="dark"?"white":"#042743"}}>
         <h2>Your text summary</h2>
-        <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+        <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
         <p>{0.008 *text.split(" ").filter((element)=>{return element.length!==0}).length } Minutes read</p>
         <h2>Preview</h2>
         <p>{text.length>0?text:"Nothing to preview!"}</p>
